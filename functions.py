@@ -388,7 +388,7 @@ def train_without_cv_transfer(model_name, model_path, subject, kfolds, frist_epo
 
         file_name = '{}_sub{}_fold{}_acc{:.4}.pth'.format(model_name, subject, kfold, best_acc)
         print(file_name)
-        torch.save(model.state_dict(), os.path.join(model_savePath, file_name))
+        torch.save(best_model, os.path.join(model_savePath, file_name))
 
         info = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         info = info + 'The model was saved successfully!'
