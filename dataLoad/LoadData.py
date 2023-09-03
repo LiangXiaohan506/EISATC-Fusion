@@ -252,15 +252,18 @@ def load_data_LOSO (data_path, subject, train_model='one_session', Transfer=Fals
                     class1_idx = np.where(y==2)
                     class2_idx = np.where(y==3)
                     class3_idx = np.where(y==4)
-                    idx = np.random.randint(class3_idx[0].shape[0], size=trans_num)
-                    X_train_trans = X[class0_idx[0][idx]]
-                    y_train_trans = y[class0_idx[0][idx]]
-                    X_train_trans = np.concatenate((X_train_trans, X[class1_idx[0][idx]]), axis=0)
-                    y_train_trans = np.concatenate((y_train_trans, y[class1_idx[0][idx]]), axis=0)
-                    X_train_trans = np.concatenate((X_train_trans, X[class2_idx[0][idx]]), axis=0)
-                    y_train_trans = np.concatenate((y_train_trans, y[class2_idx[0][idx]]), axis=0)
-                    X_train_trans = np.concatenate((X_train_trans, X[class3_idx[0][idx]]), axis=0)
-                    y_train_trans = np.concatenate((y_train_trans, y[class3_idx[0][idx]]), axis=0)
+                    idx0 = np.random.randint(class0_idx[0].shape[0], size=trans_num)
+                    idx1 = np.random.randint(class1_idx[0].shape[0], size=trans_num)
+                    idx2 = np.random.randint(class2_idx[0].shape[0], size=trans_num)
+                    idx3 = np.random.randint(class3_idx[0].shape[0], size=trans_num)
+                    X_train_trans = X[class0_idx[0][idx0]]
+                    y_train_trans = y[class0_idx[0][idx0]]
+                    X_train_trans = np.concatenate((X_train_trans, X[class1_idx[0][idx1]]), axis=0)
+                    y_train_trans = np.concatenate((y_train_trans, y[class1_idx[0][idx1]]), axis=0)
+                    X_train_trans = np.concatenate((X_train_trans, X[class2_idx[0][idx2]]), axis=0)
+                    y_train_trans = np.concatenate((y_train_trans, y[class2_idx[0][idx2]]), axis=0)
+                    X_train_trans = np.concatenate((X_train_trans, X[class3_idx[0][idx3]]), axis=0)
+                    y_train_trans = np.concatenate((y_train_trans, y[class3_idx[0][idx3]]), axis=0)
             elif (X_train == []):
                 X_train, y_train = load_data_2a(path, sub, True)
             else:
