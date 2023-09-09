@@ -38,14 +38,16 @@ import datetime
 
 print(torch.__version__)
 
-###============================ Sets the seed for random numbers ============================###
-torch.manual_seed(20230520)
-np.random.seed(20230520)
-
 ###============================ Use the GPU to train ============================###
 use_cuda = torch.cuda.is_available()
 device = torch.device('cuda:0' if use_cuda else 'cpu')
 print("current device:",torch.cuda.get_device_name(device))
+
+###============================ Sets the seed for random numbers ============================###
+torch.manual_seed(20230520)
+if use_cuda:
+    torch.cuda.manual_seed(20230520)
+np.random.seed(20230520)
 
 ###============================ Load data ============================###
 ###============ BCICIV 2a Database ============###
