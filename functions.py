@@ -406,36 +406,15 @@ def getModel(model_name, device='cpu'):
     # Select the model
     if(model_name == 'MyModel'):
         model = My_Model(eeg_chans=22, n_classes=4)
-    elif(model_name == 'ATCNet'):
-        # Train using the proposed model (ATCNet): https://doi.org/10.1109/TII.2022.3197419
-        model = ATCNet(eeg_chans=3, n_classes=2, device=device)   
-    elif(model_name == 'TCNetFusion'):
-        # Train using TCNet_Fusion: https://doi.org/10.1016/j.bspc.2021.102826
-        model = TCNet_Fusion(Chans=22, n_classes=4)
     elif(model_name == 'EEGNet'):
         # Train using EEGNet: https://arxiv.org/abs/1611.08024
         model = EEGNet(eeg_chans=22, n_classes=2)
-    elif(model_name == 'SincEEGNet'):
-        # Train using Sinc_EEGNet: https://doi.org/10.1007/978-3-030-68763-2_40
-        model = Sinc_EEGNet(n_classes=4)
-    elif(model_name == 'FBSincCSANet'):
-        # Train using FB_Sinc_CSANet: https://iopscience.iop.org/article/10.1088/1741-2552/acbb2c
-        model = FB_Sinc_CSANet(channels=22, n_classes=4)
-    elif(model_name == 'MTFBCNN'):
-        # Train using MTFB_CNN: https://doi.org/10.1016/j.bspc.2022.104066
-        model = MTFB_CNN(chanSize=22, n_classes=4)
-    elif(model_name == 'EEGTCNet'):
-        # Train using EEGTCNet: https://arxiv.org/abs/2006.00622
-        model = EEG_TCNet(eeg_chans=22, n_classes=4)
     elif(model_name == 'ShallowConvNet'):
         # Train using ShallowConvNet: https://doi.org/10.1002/hbm.23730
         model = Shallow_ConvNet(kernel_size_spat=22, n_classes=4)
     elif(model_name == 'DeepConvNet'):
         # Train using DeepConvNet: https://doi.org/10.1002/hbm.23730
         model = Deep_ConvNet(kernel_size_spat=22, n_classes=4)
-    elif(model_name == 'IncepEEGNet'):
-        # Train using Incep_EEGNet: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7340940/
-        model = Incep_EEGNet(channels=22, n_classes=4)
     else:
         raise Exception("'{}' model is not supported yet!".format(model_name))
 
