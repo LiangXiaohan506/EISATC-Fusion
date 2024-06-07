@@ -19,11 +19,8 @@ Author:  Guangjin Liang
 import os
 import copy
 import torch
-import pickle
 import numpy as np
-import torch.nn as nn
-from tqdm import tqdm
-from dataLoad.preprocess import cross_validate, BCIC_DataLoader
+from dataLoad.preprocess import cross_validate
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
@@ -39,13 +36,13 @@ import datetime
 
 
 
-#%%
+#%% Model parameter reset
 def reset_parameters(model):
     if hasattr(model, 'reset_parameters'):
         model.reset_parameters()
 
 
-#%%
+#%% Model validation functions
 def validate_model(model, dataset, device, losser, batch_size=128, n_calsses=4):
     loader = DataLoader(dataset, batch_size=batch_size)
     loss_val = 0.0
@@ -73,7 +70,7 @@ def validate_model(model, dataset, device, losser, batch_size=128, n_calsses=4):
     return loss_val, accuracy_val, confusion_val
 
 
-#%%
+#%% Improved two-stage model training strategy
 def train_with_cross_validate(model_name, subject, frist_epochs, eary_stop_epoch, second_epochs, kfolds, batch_size, 
                               device, X_train, Y_train, model, losser, model_savePath, n_calsses):
     '''
