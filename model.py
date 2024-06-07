@@ -27,13 +27,9 @@ import torch
 import torch.nn as nn
 from torchinfo import summary
 from torchstat import stat
-from utils.SincConv_util import SincConv2d
 from utils.TemInc_util import TemporalInception
-from utils.MHSA_util import MultiHeadSelfAttention
 from utils.CNNMHAS_util import CNNAttention
-from utils.TCN_util import TemporalConvNet
-from utils.EEGNet_util import EEGNet_util
-from utils.util import Conv2dWithConstraint,LinearWithConstraint
+from utils.util import Conv2dWithConstraint
 
 
 
