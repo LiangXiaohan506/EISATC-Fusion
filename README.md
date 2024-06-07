@@ -9,17 +9,19 @@ Collaborative Innovation Centre for Rehabilitation and Care Robotics, College of
 
 EISATC-Fusion model consists of four modules: the EEGNet DS Inception (EDSI) module, cnnCos multi-head self-attention (cnnCosMSA) module, temporal depthwise separable convolutional network (TDSCN) module, and fusion module.
 
+<p align="center">
+The overall architecture of EISATC-Fusion.
+</p>
+<p align="center">
+<img src="pictures/Overall architecture.png" alt="The overall architecture of EISATC-Fusion" width="700"/>
+</p>
+
 1. The EDSI uses normal convolution and depthwise (DW) convolution to extract the temporal and spatial features and uses a depthwise separable (DS) inception block to extract the multi-scale time features.
 2. The cnnCosMSA utilizes DW convolutional and cos attention to extract global features with long time-dependence.
 3. The features output by the EDSI and the cnnCosMSA are combined along the depth dimension and then fed into the TDSCN to extract high-level temporal features.
 4. The features output by the EDSI and the TDSCN are each fed into two fully connected (FC) layers, and the classification decision information output by the FC is fused through a learnable tensor.
 
-<p align="center">
-The overall architecture of EISATC-Fusion.
-</p>
-<p align="center">
-<img src="pictures/Overall-architecture.eps" alt="The components of the proposed ATCNet model" width="700"/>
-</p>
+
 
 
 
