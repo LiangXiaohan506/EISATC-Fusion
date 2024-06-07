@@ -9,17 +9,51 @@ Collaborative Innovation Centre for Rehabilitation and Care Robotics, College of
 
 EISATC-Fusion model consists of four modules: the EEGNet DS Inception (EDSI) module, cnnCos multi-head self-attention (cnnCosMSA) module, temporal depthwise separable convolutional network (TDSCN) module, and fusion module.
 
+
+
+<p align="center">
+<img src="pictures/Overall architecture.png" alt="The overall architecture of EISATC-Fusion" width="400"/>
+</p>
 <p align="center">
 The overall architecture of EISATC-Fusion.
 </p>
+
+1. The EDSI is inspired by the EEGNet architecture introduced in [14], and the layer of SeparableConv2D in EEGNet is replaced by the DS Inception block. The EDSI uses normal convolution and depthwise (DW) convolution to extract the temporal and spatial features and uses a depthwise separable (DS) inception block to extract the multi-scale time features.
+
+
 <p align="center">
-<img src="pictures/Overall architecture.png" alt="The overall architecture of EISATC-Fusion" width="700"/>
+<img src="pictures/EEGNet DS Inception (EDSI) Module.png" alt="Architecture of the EDSI" width="800"/>
+</p>
+<p align="center">
+Architecture of the EDSI.
 </p>
 
-1. The EDSI uses normal convolution and depthwise (DW) convolution to extract the temporal and spatial features and uses a depthwise separable (DS) inception block to extract the multi-scale time features.
-2. The cnnCosMSA utilizes DW convolutional and cos attention to extract global features with long time-dependence.
-3. The features output by the EDSI and the cnnCosMSA are combined along the depth dimension and then fed into the TDSCN to extract high-level temporal features.
-4. The features output by the EDSI and the TDSCN are each fed into two fully connected (FC) layers, and the classification decision information output by the FC is fused through a learnable tensor.
+<p align="center">
+<img src="pictures/Inception DW Conv.png" alt="Architecture of the DS Inception (DSI) block consisting of four paths" width="400"/>
+</p>
+<p align="center">
+Architecture of the DS Inception (DSI) block consisting of four paths.
+</p>
+
+2. The cnnCos Multi-head Self-Attention module is designed based on the CNN to address the issue of attention collapse during the processing of EEG signals by MSA. Cos attention is added to enhance the attention value and improve the interpretability of the model.
+
+<p align="center">
+<img src="pictures/cnnCos Multi-head Self-Attention (cnnCosMSA) Module.png" alt="Architecture of the cnnCosMSA" width="800"/>
+</p>
+<p align="center">
+Architecture of the cnnCosMSA.
+</p>
+
+3. In order to reduce the number of parameters of the TCN module without reducing the decoding performance of the module, we improved TCN by replacing dilated causal convolution with dilated causal DS convolution, which contains a layer of the dilated causal depthwise convolution and a layer of pointwise convolution.
+
+<p align="center">
+<img src="pictures/Temporal Depthwise Separable Convolutional Network (TDSCN) Module.png" alt="Architecture of the TDSCN" width="800"/>
+</p>
+<p align="center">
+Architecture of the TDSCN
+</p>
+
+4. The fusion module consists of two parts: feature fusion and decision fusion.
 
 
 
