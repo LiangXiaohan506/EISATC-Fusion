@@ -18,7 +18,7 @@ EISATC-Fusion model consists of four modules: the EEGNet DS Inception (EDSI) mod
 The overall architecture of EISATC-Fusion.
 </p>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/25565236/185449791-e8539453-d4fa-41e1-865a-2cf7e91f60ef.png" alt="The components of the proposed ATCNet model" width="700"/>
+<img src="pictures/Overall-architecture.eps" alt="The components of the proposed ATCNet model" width="700"/>
 </p>
 
 
